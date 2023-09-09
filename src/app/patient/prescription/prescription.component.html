@@ -13,11 +13,11 @@
     <div class="container mt-5">
       <div class="card prescription-card">
         <div class="card-header">
-          <h2>Dr {{onePrescription.doctor.firstName}} {{onePrescription.doctor.lastName}}</h2>
+          <h2><a [routerLink]="['/patients/doctor',onePrescription.doctor.id ]">Dr {{onePrescription.doctor.firstName}}
+              {{onePrescription.doctor.lastName}}</a></h2>
           <p>{{onePrescription.doctor.proficiency}}</p>
           <p>{{onePrescription.doctor.doctorInformation.phoneNumber}}</p>
           <p>{{onePrescription.doctor.email}}</p>
-
         </div>
         <div class="card-body">
           <!-- Content inside the prescription card -->
@@ -25,13 +25,14 @@
             <div class="patient-info">
               <h3>Patient Information</h3>
               <p>Name: {{onePrescription.patient.firstName}} {{onePrescription.patient.lastName}}</p>
-              <p>Age : {{onePrescription.patient.patientInformation.age}} </p> 
+              <p>Age : {{onePrescription.patient.patientInformation.age}} </p>
             </div>
             <div class="medication-info">
               <h3>Medication</h3>
               <ul>
-                <li *ngFor="let oneMedicine of onePrescription.medicines" >
-                  {{oneMedicine.medicineName  }}: Take {{oneMedicine.morning}} tablet in the morning {{oneMedicine.afternoon}} in the afternoon {{oneMedicine.night}} night
+                <li *ngFor="let oneMedicine of onePrescription.medicines">
+                  {{oneMedicine.medicineName }}: Take {{oneMedicine.morning}} tablet in the morning
+                  {{oneMedicine.afternoon}} in the afternoon {{oneMedicine.night}} night
                 </li>
                 <!-- Add more medication details as needed -->
               </ul>

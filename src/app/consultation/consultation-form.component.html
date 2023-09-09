@@ -27,24 +27,24 @@
               <tr>
                 <th>Status</th>
                 <th>Start Time</th>
-                <th>End Time</th>
+                <!-- <th>End Time</th> -->
                 <th>Concerns</th>
                 <th>Doctor</th>
-                <th>Link</th>
+                <!-- <th>Link</th> -->
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let consultation of consultations">
                 <td>{{ consultation.status }}</td>
-                <td>{{ consultation.startTime }}</td>
-                <td>{{ consultation.endTime }}</td>
+                <td>Video call starts in: {{ remainingTimes[consultation.id] }} </td>
+                <!-- <td>{{ consultation.endTime }}</td> -->
                 <td>{{ consultation.concerns }}</td>
-                <td>{{consultation.doctor.firstName}}</td>
-                <button
+                <td>{{consultation.doctor.firstName}} {{consultation.doctor.lastName}}</td>
+                <!-- <button
                 (click)="openVideoCall(consultation.link)"
                 class="btn btn-warning">
                 Start Video Call
-              </button>
+              </button> -->
             </tr>
             </tbody>
           </table>

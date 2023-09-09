@@ -27,6 +27,11 @@ import { VideoComponent } from './video/video.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { AllPrescriptionsComponent } from './all-prescriptions/all-prescriptions.component';
 import { RelativeTimePipe } from './relative-time-pipe/relative-time-pipe.component';
+import { CountdownPipe } from './countdown/countdown.pipe';
+import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -46,7 +51,10 @@ import { RelativeTimePipe } from './relative-time-pipe/relative-time-pipe.compon
         AccountComponent,
         VideoComponent,
         AllPrescriptionsComponent,
-        RelativeTimePipe
+        RelativeTimePipe,
+        CountdownPipe,
+        DoctorProfileComponent,
+        StarRatingComponent
         
         
     ],
@@ -63,7 +71,9 @@ import { RelativeTimePipe } from './relative-time-pipe/relative-time-pipe.compon
         MatSidenavModule,
         MatListModule,
         MatIconModule,
-        QRCodeModule
+        QRCodeModule,
+        NgbModule,
+        
     ]
 })
 export class AppModule { }

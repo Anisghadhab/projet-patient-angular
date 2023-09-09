@@ -1,0 +1,97 @@
+<div class="header">
+    <!-- Navbar component -->
+    <app-navbar></app-navbar>
+</div>
+<div class="content-wrapper row">
+    <div class="sidebar custom-sidebar">
+        <!-- Sidebar component -->
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="main-content">
+
+        <div class="container mt-4">
+            <!-- Doctor Full Name -->
+            <h1>{{ thisDoctor.firstName }} {{ thisDoctor.lastName }}</h1>
+
+            <div class="row">
+                <!-- Doctor Information Card -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Doctor Information
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <strong>Price:</strong> {{ thisDoctor.doctorInformation.price }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Phone Number:</strong> {{ thisDoctor.doctorInformation.phoneNumber }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Availability:</strong>
+                                    From: {{ thisDoctor.doctorInformation.startTime | date:'EEEE, dd/MM' }}
+                                    To: {{ thisDoctor.doctorInformation.endTime | date:'EEEE, dd/MM' }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating and Reviews Card -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Rating and Reviews
+                        </div>
+                        <div class="card-body">
+                            <!-- Display Doctor's Rating -->
+                            <div class="mb-3">
+                                <div *ngIf="thisDoctor.doctorReviews.length > 0">
+                                    <div class="rating" *ngFor="let review of thisDoctor.doctorReviews"></div>
+                                    <div class="average-rating">
+                                        Average Rating: {{ calculateAverageRating(thisDoctor.doctorReviews) }}
+                                    </div>
+                                </div>
+                                <div *ngIf="thisDoctor.doctorReviews.length === 0">
+                                    No reviews available.
+                                </div>
+                            </div>
+
+                            <!-- Display Patient Reviews -->
+                            <h5>Patient Reviews</h5>
+                            <div *ngFor="let review of thisDoctor.doctorReviews" class="mb-3">
+                                <div class="mb-2">
+                                    <strong>{{ review.patient.firstName }}</strong>
+                                    <span class="text-muted"> - {{ review.createdAt | relativeTime }}</span>
+                                    <div class="rating">{{ review.rate }}</div>
+                                </div>
+                                <p>{{ review.comment }}</p>
+                            </div>
+                            <h5>Add a Review</h5>
+
+                            <form (ngSubmit)="addReview()" [formGroup]="reviewForm">
+
+                                <div class="form-group">
+                                    <label for="rate">Rating:</label>
+                                    <ngb-rating [max]="5" [(rate)]="rate" [readonly]="false" ></ngb-rating>
+                                  </div>
+                                  
+                                <div class="form-group">
+                                    <label for="comment">Comment:</label>
+                                    <textarea class="form-control" id="comment" name="comment" formControlName="comment"
+                                        required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

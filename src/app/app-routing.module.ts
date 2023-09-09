@@ -10,6 +10,8 @@ import { AccountComponent } from './patient/account/account.component';
 import { VideoComponent } from './video/video.component';
 import { AllPrescriptionsComponent } from './all-prescriptions/all-prescriptions.component';
 import { PrescriptionComponent } from './patient/prescription/prescription.component';
+import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 const routes: Routes = [
   { path: 'patients/questionnaire/:id', component: QuestionnaireComponent },
@@ -20,9 +22,10 @@ const routes: Routes = [
   { path: 'patients/login', component: LoginComponent },
   { path: 'patients/documents', component: AllPrescriptionsComponent },
   { path: 'patients/documents/:id', component: PrescriptionComponent },
-
+  { path: 'patients/doctor/:id', component: DoctorProfileComponent },
   { path: 'patients/account', component: AccountComponent },
-  { path: 'video/:link', component: VideoComponent }
+  { path: 'video/:link', component: VideoComponent },
+
 
 ];
 @NgModule({
